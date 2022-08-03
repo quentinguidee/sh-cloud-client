@@ -10,6 +10,7 @@ import Symbol from "Components/Symbol/Symbol";
 import { StepProps } from "Pages/ServerConfig/ServerConfig";
 import InputSelect, { InputSelectItem } from "Components/Input/InputSelect";
 import Box from "Components/Box/Box";
+import { Title } from "Components/Title/Title";
 
 type DBMS = "postgresql" | "sqlite";
 
@@ -81,6 +82,7 @@ function DatabaseConfigStep(props: StepProps) {
 
     return (
         <Fragment>
+            <Title>Database setup</Title>
             <Layout stretch vertical gap={20} className={styles.fields}>
                 <InputSelect label="DBMS" name="dbms" onChange={onDBMSChange}>
                     <InputSelectItem value="postgresql">

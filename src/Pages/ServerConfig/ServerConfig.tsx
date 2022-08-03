@@ -8,7 +8,6 @@ import DatabaseConfigStep from "Pages/ServerConfig/Steps/DatabaseConfigStep";
 import OAuthConfigStep from "Pages/ServerConfig/Steps/OAuthConfigStep";
 import Layout from "Components/Layout/Layout";
 import Box from "Components/Box/Box";
-import { Title } from "Components/Title/Title";
 
 export type StepProps = {
     onDone: () => void;
@@ -62,7 +61,6 @@ function ServerConfig() {
         <Layout horizontal className={styles.content}>
             <Box type="primary">
                 <Layout vertical stretch gap={32}>
-                    <Title>Database setup</Title>
                     {content}
                 </Layout>
             </Box>

@@ -8,6 +8,7 @@ import Button from "Components/Button/Button";
 import { Text } from "Components/Text/Text";
 import Symbol from "Components/Symbol/Symbol";
 import { StepProps } from "Pages/ServerConfig/ServerConfig";
+import { Title } from "Components/Title/Title";
 
 function OAuthConfigStep(props: StepProps) {
     const [name, setName] = useState<string>();
@@ -60,6 +61,7 @@ function OAuthConfigStep(props: StepProps) {
 
     return (
         <Fragment>
+            <Title>Authentication setup</Title>
             <Layout stretch vertical gap={20} className={styles.fields}>
                 <Input
                     label="Provider"
