@@ -52,6 +52,9 @@ module.exports = {
             favicon: path.join(__dirname, "public", "favicon.ico"),
             filename: "index.html",
         }),
-        new Dotenv({ path: ".env" }),
+        new Dotenv({
+            path: ".env",
+            systemvars: true,
+        }),
     ],
 };
