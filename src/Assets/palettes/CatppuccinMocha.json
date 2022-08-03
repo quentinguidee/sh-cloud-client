@@ -4,7 +4,7 @@
     "colors": {
         "--background-primary": "#1e1e2e",
         "--background-secondary": "#313244",
-        "--background-tertiary": "45475a",
+        "--background-tertiary": "#45475a",
         "--background-hover": "#45475a",
         "--background-red": "#ef4d4d",
         "--background-orange": "#ef7e4d",
