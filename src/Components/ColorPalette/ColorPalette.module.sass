@@ -1,6 +1,7 @@
 @use "Assets/colors.sass"
 @use "Assets/dimensions.sass"
 @use "Assets/transitions.sass"
+@use "Assets/shadows.sass"
 
 .palette
     border-radius: dimensions.$border-radius
@@ -23,8 +24,10 @@
 .colors
     border-radius: dimensions.$border-radius
     overflow: hidden
+    border: 1px solid colors.$text-dark
+    @include shadows.default-shadow
 
 .color
-    width: 48px
-    height: 14px
+    width: 28px
+    height: 12px
     transition: transitions.$default

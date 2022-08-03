@@ -40,6 +40,7 @@ function SettingsProfile() {
                     onClick={switchTheme}
                     colors={[
                         palette.colors["--background-primary"],
+                        palette.colors["--text-primary"],
                         palette.colors["--accent"],
                         palette.colors["--background-red"],
                         palette.colors["--background-orange"],
