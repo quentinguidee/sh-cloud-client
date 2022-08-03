@@ -1,17 +1,22 @@
 @use "Assets/colors.sass"
 @use "Assets/dimensions.sass"
 @use "Assets/fonts.sass"
+@use "Assets/transitions.sass"
 
 .input
     background-color: colors.$background-secondary
     border-radius: dimensions.$border-radius
     min-height: 24px
     outline: none
-    border: none
+    border: 2px solid colors.$background-secondary
     padding: 7px 12px
     font: fonts.$family-normal
     font-size: fonts.$size-normal
     color: colors.$text-primary
+    transition: transitions.$default
+
+    &:focus
+        border: 2px solid colors.$accent
 
     &::placeholder
         color: colors.$text-disabled
@@ -22,3 +27,4 @@
 
 .label
     font-size: fonts.$size-caption
+    font-weight: fonts.$weight-bold
