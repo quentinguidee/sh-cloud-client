@@ -9,6 +9,7 @@ import { Text } from "Components/Text/Text";
 import Symbol from "Components/Symbol/Symbol";
 import { StepProps } from "Pages/ServerConfig/ServerConfig";
 import InputSelect, { InputSelectItem } from "Components/Input/InputSelect";
+import Box from "Components/Box/Box";
 
 type DBMS = "postgresql" | "sqlite";
 
@@ -19,8 +20,13 @@ function DatabaseConfigStep(props: StepProps) {
     const [user, setUser] = useState<string>();
     const [password, setPassword] = useState<string>();
 
+    const [loading, setLoading] = useState<boolean>(false);
+    const [error, setError] = useState<string>();
+
     const save = () => {
         if (!canTryToConnect()) return;
+        setError(undefined);
+        setLoading(true);
 
         let params;
         switch (dbms) {
@@ -38,7 +44,17 @@ function DatabaseConfigStep(props: StepProps) {
             params,
         })
             .then(() => props.onDone())
-            .catch(api.error);
+            .catch((err) => {
+                const res = err.response;
+                if (res.data.type === "DatabaseConnectionFailedException") {
+                    setError(`${res.data.message} Try different values.`);
+                } else {
+                    api.error(err);
+                }
+            })
+            .finally(() => {
+                setLoading(false);
+            });
     };
 
     const onDBMSChange = (e) => setDBMS(e.target.value);
@@ -108,8 +124,17 @@ function DatabaseConfigStep(props: StepProps) {
                         />
                     </Fragment>
                 )}
+                {loading && <Text>Loading...</Text>}
+                {error && (
+                    <Box type="error">
+                        <Layout horizontal gap={12}>
+                            <Symbol symbol="error" />
+                            <Text>{error}</Text>
+                        </Layout>
+                    </Box>
+                )}
             </Layout>
-            <Button big disabled={!canTryToConnect()} onClick={save}>
+            <Button big disabled={!canTryToConnect() || loading} onClick={save}>
                 <Text>Connect</Text>
                 <Symbol symbol="router" />
             </Button>
