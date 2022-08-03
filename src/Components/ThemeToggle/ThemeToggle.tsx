@@ -1,7 +1,7 @@
 import React from "react";
 import Symbol from "Components/Symbol/Symbol";
 import Button from "Components/Button/Button";
-import { setTheme } from "Store/Slices/ThemeSlice";
+import { toggleTheme } from "Store/Slices/ThemeSlice";
 import { useDispatch } from "react-redux";
 import { useTheme } from "Store/Hooks/useTheme";
 
@@ -14,14 +14,11 @@ function ThemeToggle(props: Props) {
 
     const theme = useTheme();
 
-    const toggleTheme = () => {
-        const newTheme = theme === "dark" ? "light" : "dark";
-        dispatch(setTheme(newTheme));
-    };
-
     return (
-        <Button onlySymbol onClick={toggleTheme}>
-            <Symbol symbol={theme === "dark" ? "dark_mode" : "light_mode"} />
+        <Button onlySymbol onClick={() => dispatch(toggleTheme())}>
+            <Symbol
+                symbol={theme.current === "dark" ? "dark_mode" : "light_mode"}
+            />
             {children}
         </Button>
     );

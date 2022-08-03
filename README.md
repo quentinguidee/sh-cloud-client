@@ -27,4 +27,6 @@ If you have any issues, don't hesitate to open an [issue](https://github.com/que
 
 ## License
 
-This project is released under the [MIT License](./LICENSE.md).
+* This project is released under the [MIT License](./LICENSE.md).
+
+* All 4 Catppuccin themes come from [Catppuccin](https://github.com/catppuccin/catppuccin), also released under the [MIT License](https://github.com/catppuccin/catppuccin/blob/main/LICENSE)

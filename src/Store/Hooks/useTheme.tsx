@@ -1,9 +1,9 @@
 import { useSelector } from "react-redux";
 import { getTheme } from "Store/Slices/ThemeSlice";
 import { useMemo } from "react";
-import { Theme } from "Models/Theme";
+import { ThemeSettings } from "Models/ThemeSettings";
 
 export const useTheme = () => {
     const theme = useSelector(getTheme);
-    return useMemo<Theme>(() => theme, [theme]);
+    return useMemo<ThemeSettings>(() => theme, [theme]);
 };

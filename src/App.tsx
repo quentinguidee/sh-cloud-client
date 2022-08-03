@@ -1,15 +1,15 @@
-import React from "react";
+import React, { CSSProperties } from "react";
 import Router from "./Router";
-import classNames from "classnames";
 
 import "Assets/Reset.sass";
 import "Assets/App.sass";
 import { Provider } from "react-redux";
 import store, { persistor } from "Store/Store";
 import { PersistGate } from "redux-persist/integration/react";
-import { useTheme } from "Store/Hooks/useTheme";
 import MessageBoxStack from "Components/MessageBoxStack/MessageBoxStack";
 import { useMessages } from "Store/Hooks/useMessages";
+import { getCSSPalette } from "Assets/palettes/Palettes";
+import { useTheme } from "Store/Hooks/useTheme";
 
 function App() {
     return (
@@ -26,8 +26,13 @@ function Container() {
 
     const theme = useTheme();
 
+    const palette: CSSProperties = getCSSPalette(
+        theme.current === "light" ? theme.light : theme.dark,
+        theme.current !== "light",
+    );
+
     return (
-        <div className={classNames(theme)}>
+        <div style={palette} className="palette">
             <Router />
             <MessageBoxStack messages={messages} />
         </div>

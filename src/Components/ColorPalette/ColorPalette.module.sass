@@ -4,9 +4,27 @@
 
 .palette
     border-radius: dimensions.$border-radius
+    border: 1px solid colors.$background-secondary
+    padding: 10px 12px
+    cursor: pointer
+    user-select: none
+    transition: transitions.$default
+
+    &Selected
+        background-color: colors.$background-secondary
+
+    &:hover
+        background-color: colors.$background-hover
+        border-color: colors.$background-tertiary
+
+.title
+    width: 180px
+
+.colors
+    border-radius: dimensions.$border-radius
     overflow: hidden
 
 .color
     width: 48px
-    height: 24px
+    height: 14px
     transition: transitions.$default

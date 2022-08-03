@@ -1,0 +1,27 @@
+{
+    "name": "Catppuccin Frappé",
+    "dark": true,
+    "colors": {
+        "--background-primary": "#303446",
+        "--background-secondary": "#414559",
+        "--background-tertiary": "51576d",
+        "--background-hover": "#414559",
+        "--background-red": "#e78284",
+        "--background-orange": "#ef9f76",
+        "--background-blue": "#99d1db",
+        "--text-primary": "#c6d0f5",
+        "--text-secondary": "#b5bfe2",
+        "--text-tertiary": "#a5adce",
+        "--text-inverted": "#303446",
+        "--text-red": "#e78284",
+        "--text-green": "#a6d189",
+        "--text-dark": "#303446",
+        "--text-light": "#c6d0f5",
+        "--text-disabled": "#838ba7",
+        "--text-on-color": "#c6d0f5",
+        "--accent": "#babbf1",
+        "--accent-hover": "#babbf1",
+        "--overlay": "#737994",
+        "--outline": "rgba(255, 255, 255, 0.1)"
+    }
+}
