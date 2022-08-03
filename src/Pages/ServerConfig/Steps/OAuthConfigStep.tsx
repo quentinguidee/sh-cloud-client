@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import axios from "axios";
 import { api, route } from "Backend/api";
 import Layout from "Components/Layout/Layout";
-import { Subtitle } from "Components/Title/Title";
 import styles from "Pages/ServerConfig/ServerConfig.module.sass";
 import Input from "Components/Input/Input";
 import Button from "Components/Button/Button";
@@ -60,71 +59,68 @@ function OAuthConfigStep(props: StepProps) {
     };
 
     return (
-        <Layout vertical left gap={32}>
-            <Subtitle style={{ marginLeft: 12 }}>Authentication setup</Subtitle>
-            <Layout right vertical gap={32}>
-                <Layout stretch vertical gap={20} className={styles.fields}>
-                    <Input
-                        label="Provider"
-                        name="name"
-                        placeholder="GitHub"
-                        type="text"
-                        value={name}
-                        onChange={onNameChange}
-                    />
-                    <Input
-                        label="Color"
-                        name="color"
-                        type="color"
-                        value={color}
-                        onChange={onColorChange}
-                    />
-                    <Input
-                        label="Client ID"
-                        name="client_id"
-                        type="text"
-                        value={clientID}
-                        onChange={onClientIDChange}
-                    />
-                    <Input
-                        label="Client Secret"
-                        name="client_secret"
-                        placeholder="***"
-                        type="password"
-                        value={clientSecret}
-                        onChange={onClientSecretChange}
-                    />
-                    <Input
-                        label="Authorize URL"
-                        name="authorize_url"
-                        placeholder="https://..."
-                        type="url"
-                        value={authorizeURL}
-                        onChange={onAuthorizeURLChange}
-                    />
-                    <Input
-                        label="Access Token URL"
-                        name="access_token_url"
-                        placeholder="https://..."
-                        type="url"
-                        value={accessTokenURL}
-                        onChange={onAccessTokenURLChange}
-                    />
-                    <Input
-                        label="Redirect URL"
-                        name="redirect_url"
-                        placeholder="https://..."
-                        type="url"
-                        value={redirectURL}
-                        onChange={onRedirectURLChange}
-                    />
-                </Layout>
-                <Button onClick={save}>
-                    <Text>OK</Text>
-                    <Symbol symbol="done" />
-                </Button>
+        <Fragment>
+            <Layout stretch vertical gap={20} className={styles.fields}>
+                <Input
+                    label="Provider"
+                    name="name"
+                    placeholder="GitHub"
+                    type="text"
+                    value={name}
+                    onChange={onNameChange}
+                />
+                <Input
+                    label="Color"
+                    name="color"
+                    type="color"
+                    value={color}
+                    onChange={onColorChange}
+                />
+                <Input
+                    label="Client ID"
+                    name="client_id"
+                    type="text"
+                    value={clientID}
+                    onChange={onClientIDChange}
+                />
+                <Input
+                    label="Client Secret"
+                    name="client_secret"
+                    placeholder="***"
+                    type="password"
+                    value={clientSecret}
+                    onChange={onClientSecretChange}
+                />
+                <Input
+                    label="Authorize URL"
+                    name="authorize_url"
+                    placeholder="https://..."
+                    type="url"
+                    value={authorizeURL}
+                    onChange={onAuthorizeURLChange}
+                />
+                <Input
+                    label="Access Token URL"
+                    name="access_token_url"
+                    placeholder="https://..."
+                    type="url"
+                    value={accessTokenURL}
+                    onChange={onAccessTokenURLChange}
+                />
+                <Input
+                    label="Redirect URL"
+                    name="redirect_url"
+                    placeholder="https://..."
+                    type="url"
+                    value={redirectURL}
+                    onChange={onRedirectURLChange}
+                />
             </Layout>
-        </Layout>
+            <Button big onClick={save}>
+                <Text>OK</Text>
+                <Symbol symbol="done" />
+            </Button>
+        </Fragment>
     );
 }
 

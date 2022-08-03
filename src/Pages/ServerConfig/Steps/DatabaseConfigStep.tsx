@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import axios from "axios";
 import { api, route } from "Backend/api";
 import Layout from "Components/Layout/Layout";
-import { Subtitle } from "Components/Title/Title";
 import styles from "Pages/ServerConfig/ServerConfig.module.sass";
 import Input from "Components/Input/Input";
 import Button from "Components/Button/Button";
@@ -32,49 +31,46 @@ function DatabaseConfigStep(props: StepProps) {
     const onPasswordChange = (e) => setPassword(e.target.value);
 
     return (
-        <Layout vertical left gap={32}>
-            <Subtitle style={{ marginLeft: 12 }}>Database setup</Subtitle>
-            <Layout right vertical gap={32}>
-                <Layout stretch vertical gap={20} className={styles.fields}>
-                    <Input
-                        label="URL"
-                        name="url"
-                        placeholder="localhost"
-                        type="url"
-                        value={host}
-                        onChange={onHostChange}
-                    />
-                    <Input
-                        label="Name"
-                        name="name"
-                        placeholder="cloudsh"
-                        type="text"
-                        value={name}
-                        onChange={onNameChange}
-                    />
-                    <Input
-                        label="Username"
-                        name="username"
-                        placeholder="jean.dupont"
-                        type="text"
-                        value={user}
-                        onChange={onUserChange}
-                    />
-                    <Input
-                        label="Password"
-                        name="password"
-                        placeholder="***"
-                        type="password"
-                        value={password}
-                        onChange={onPasswordChange}
-                    />
-                </Layout>
-                <Button onClick={save}>
-                    <Text>Connect</Text>
-                    <Symbol symbol="network_check" />
-                </Button>
+        <Fragment>
+            <Layout stretch vertical gap={20} className={styles.fields}>
+                <Input
+                    label="URL"
+                    name="url"
+                    placeholder="localhost"
+                    type="url"
+                    value={host}
+                    onChange={onHostChange}
+                />
+                <Input
+                    label="Name"
+                    name="name"
+                    placeholder="cloudsh"
+                    type="text"
+                    value={name}
+                    onChange={onNameChange}
+                />
+                <Input
+                    label="Username"
+                    name="username"
+                    placeholder="jean.dupont"
+                    type="text"
+                    value={user}
+                    onChange={onUserChange}
+                />
+                <Input
+                    label="Password"
+                    name="password"
+                    placeholder="***"
+                    type="password"
+                    value={password}
+                    onChange={onPasswordChange}
+                />
             </Layout>
-        </Layout>
+            <Button big onClick={save}>
+                <Text>Connect</Text>
+                <Symbol symbol="router" />
+            </Button>
+        </Fragment>
     );
 }
 

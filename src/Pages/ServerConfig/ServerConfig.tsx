@@ -7,6 +7,8 @@ import { useNavigate } from "react-router-dom";
 import DatabaseConfigStep from "Pages/ServerConfig/Steps/DatabaseConfigStep";
 import OAuthConfigStep from "Pages/ServerConfig/Steps/OAuthConfigStep";
 import Layout from "Components/Layout/Layout";
+import Box from "Components/Box/Box";
+import { Subtitle } from "Components/Title/Title";
 
 export type StepProps = {
     onDone: () => void;
@@ -58,7 +60,12 @@ function ServerConfig() {
 
     return (
         <Layout horizontal className={styles.content}>
-            {content}
+            <Box type="primary">
+                <Layout vertical stretch gap={32}>
+                    <Subtitle>Database setup</Subtitle>
+                    {content}
+                </Layout>
+            </Box>
         </Layout>
     );
 }

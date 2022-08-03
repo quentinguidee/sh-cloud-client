@@ -9,6 +9,7 @@ type Props = React.HTMLProps<HTMLDivElement> & {
     secondary?: boolean;
     onlySymbol?: boolean;
     sharp?: boolean;
+    big?: boolean;
 };
 
 function Button(props: Props) {
@@ -19,6 +20,7 @@ function Button(props: Props) {
         secondary,
         onlySymbol,
         sharp,
+        big,
         ...others
     } = props;
 
@@ -33,6 +35,7 @@ function Button(props: Props) {
                 [styles.buttonOnlySymbol]: onlySymbol,
                 [styles.buttonDisabled]: disabled,
                 [styles.buttonSharp]: sharp,
+                [styles.buttonBig]: big,
                 [className]: true,
             })}
             {...others}

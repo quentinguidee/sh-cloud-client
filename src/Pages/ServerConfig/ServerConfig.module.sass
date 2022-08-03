@@ -1,4 +1,5 @@
 @use "Assets/colors.sass"
+@use "Assets/shadows.sass"
 
 .content
     display: flex
@@ -6,6 +7,8 @@
     justify-content: center
     height: 100vh
     width: 100vw
+    background-color: colors.$background-secondary
+    @include shadows.default-shadow
 
 .sidebar
     background-color: colors.$background-secondary
@@ -13,9 +16,6 @@
     height: 100vh
     padding: 32px 48px
     box-sizing: border-box
-
-.step
-    flex-grow: 2
 
 .fields
     width: min(400px, 80vw)
