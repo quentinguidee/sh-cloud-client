@@ -24,13 +24,9 @@ function LoginButton(props: LoginButtonProps) {
     const { display_name, color: backgroundColor } = method;
 
     return (
-        <Button
-            onClick={onClick}
-            style={{ backgroundColor }}
-            className={styles.github}
-        >
-            <Symbol symbol="login" />
+        <Button big onClick={onClick} style={{ backgroundColor }}>
             Login with {display_name}
+            <Symbol symbol="login" />
         </Button>
     );
 }
