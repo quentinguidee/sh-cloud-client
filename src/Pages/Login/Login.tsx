@@ -25,7 +25,7 @@ function LoginButton(props: LoginButtonProps) {
 
     return (
         <Button big onClick={onClick} style={{ backgroundColor }}>
-            Login with {display_name}
+            {display_name}
             <Symbol symbol="login" />
         </Button>
     );
