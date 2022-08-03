@@ -2,9 +2,9 @@ import { Message } from "Models/Message";
 import store from "Store/Store";
 import { pushMessage } from "Store/Slices/MessagesSlice";
 
-const API_URL = process.env.API_URL;
+const SERVER_URL = process.env.SERVER_URL;
 
-export const route = (route: string) => `${API_URL}${route}`;
+export const route = (route: string) => `${SERVER_URL}${route}`;
 
 export const api = {
     error: (err) => {
