@@ -16,22 +16,14 @@ The storage could be corrupted when upgrading from one version to another and th
 
 <img width="1304" alt="screen" src="https://user-images.githubusercontent.com/12123721/179521827-fc21d6a4-61ff-4357-81d1-a1c14b74062e.png">
 
-## Start coding
+## Install
 
-```bash
-git clone https://github.com/quentinguidee/cloud-sh-client.git
-yarn install
-yarn start
-```
+To run cloud.sh, follow these steps on the Wiki:
 
-You also need to start a [cloud-sh-server](https://github.com/quentinguidee/cloud-sh-server) instance:
+1. [Installation](https://github.com/quentinguidee/cloud-sh-client/wiki/Installation)
+2. [Configuration](https://github.com/quentinguidee/cloud-sh-client/wiki/Configuration)
 
-```bash
-git clone https://github.com/quentinguidee/cloud-sh-server.git
-```
-
-Then, follow the "first setup" instructions [here (Wiki)](https://github.com/quentinguidee/cloud-sh-client/wiki/First-setup).
-
+If you have any issues, don't hesitate to open an [issue](https://github.com/quentinguidee/cloud-sh-client/issues).
 
 ## License
 
