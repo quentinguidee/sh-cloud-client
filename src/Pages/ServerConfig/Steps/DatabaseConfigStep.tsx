@@ -8,65 +8,103 @@ import Button from "Components/Button/Button";
 import { Text } from "Components/Text/Text";
 import Symbol from "Components/Symbol/Symbol";
 import { StepProps } from "Pages/ServerConfig/ServerConfig";
+import InputSelect, { InputSelectItem } from "Components/Input/InputSelect";
+
+type DBMS = "postgresql" | "sqlite";
 
 function DatabaseConfigStep(props: StepProps) {
+    const [dbms, setDBMS] = useState<DBMS>();
     const [host, setHost] = useState<string>();
     const [name, setName] = useState<string>();
     const [user, setUser] = useState<string>();
     const [password, setPassword] = useState<string>();
 
     const save = () => {
+        if (!canTryToConnect()) return;
+
+        let params;
+        switch (dbms) {
+            case "sqlite":
+                params = { dbms };
+                break;
+            case "postgresql":
+                params = { dbms, host, name, user, password };
+                break;
+        }
+
         axios({
             method: "POST",
             url: route("/config/database"),
-            params: { host, name, user, password },
+            params,
         })
             .then(() => props.onDone())
             .catch(api.error);
     };
 
+    const onDBMSChange = (e) => setDBMS(e.target.value);
     const onHostChange = (e) => setHost(e.target.value);
     const onNameChange = (e) => setName(e.target.value);
     const onUserChange = (e) => setUser(e.target.value);
     const onPasswordChange = (e) => setPassword(e.target.value);
 
+    const canTryToConnect = () => {
+        switch (dbms) {
+            case "sqlite":
+                return true;
+            case "postgresql":
+                return host?.length > 0 && name?.length > 0;
+            default:
+                return false;
+        }
+    };
+
     return (
         <Fragment>
             <Layout stretch vertical gap={20} className={styles.fields}>
-                <Input
-                    label="URL"
-                    name="url"
-                    placeholder="localhost"
-                    type="url"
-                    value={host}
-                    onChange={onHostChange}
-                />
-                <Input
-                    label="Name"
-                    name="name"
-                    placeholder="cloudsh"
-                    type="text"
-                    value={name}
-                    onChange={onNameChange}
-                />
-                <Input
-                    label="Username"
-                    name="username"
-                    placeholder="jean.dupont"
-                    type="text"
-                    value={user}
-                    onChange={onUserChange}
-                />
-                <Input
-                    label="Password"
-                    name="password"
-                    placeholder="***"
-                    type="password"
-                    value={password}
-                    onChange={onPasswordChange}
-                />
+                <InputSelect label="DBMS" name="dbms" onChange={onDBMSChange}>
+                    <InputSelectItem value="postgresql">
+                        PostgreSQL
+                    </InputSelectItem>
+                    <InputSelectItem value="sqlite">SQLite</InputSelectItem>
+                </InputSelect>
+                {dbms === "postgresql" && (
+                    <Fragment>
+                        <Input
+                            label="URL"
+                            name="url"
+                            placeholder="localhost"
+                            type="url"
+                            value={host}
+                            onChange={onHostChange}
+                        />
+                        <Input
+                            label="Name"
+                            name="name"
+                            placeholder="cloudsh"
+                            type="text"
+                            value={name}
+                            onChange={onNameChange}
+                        />
+                        <Input
+                            label="Username"
+                            name="username"
+                            placeholder="jean.dupont"
+                            type="text"
+                            value={user}
+                            onChange={onUserChange}
+                        />
+                        <Input
+                            label="Password"
+                            name="password"
+                            placeholder="***"
+                            type="password"
+                            value={password}
+                            onChange={onPasswordChange}
+                        />
+                    </Fragment>
+                )}
             </Layout>
-            <Button big onClick={save}>
+            <Button big disabled={!canTryToConnect()} onClick={save}>
                 <Text>Connect</Text>
                 <Symbol symbol="router" />
             </Button>
