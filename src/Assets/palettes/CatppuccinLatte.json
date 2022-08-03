@@ -5,7 +5,7 @@
         "--background-primary": "#eff1f5",
         "--background-secondary": "#dce0e8",
         "--background-tertiary": "#bcc0cc",
-        "--background-hover": "#ccd0da",
+        "--background-hover": "#bcc0cc",
         "--background-red": "#d20f39",
         "--background-orange": "#fe640b",
         "--background-blue": "#04a5e5",
