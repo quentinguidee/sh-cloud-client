@@ -52,7 +52,12 @@ function DatabaseConfigStep(props: StepProps) {
             case "sqlite":
                 return true;
             case "postgresql":
-                return host?.length > 0 && name?.length > 0;
+                return (
+                    host?.length > 0 &&
+                    name?.length > 0 &&
+                    user?.length > 0 &&
+                    password?.length > 0
+                );
             default:
                 return false;
         }
