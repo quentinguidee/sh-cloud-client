@@ -32,7 +32,7 @@ function Logout() {
     return (
         <div className={styles.content}>
             <Layout vertical className={styles.logout}>
-                <Box>
+                <Box type="primary">
                     <Subtitle>Disconnecting...</Subtitle>
                 </Box>
             </Layout>
