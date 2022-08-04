@@ -18,7 +18,7 @@
         "--text-dark": "#303446",
         "--text-light": "#c6d0f5",
         "--text-disabled": "#838ba7",
-        "--text-on-color": "#c6d0f5",
+        "--text-on-color": "#303446",
         "--accent": "#babbf1",
         "--accent-hover": "#babbf1",
         "--overlay": "#737994",
