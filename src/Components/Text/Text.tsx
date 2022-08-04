@@ -7,7 +7,7 @@ type Props = React.HTMLProps<HTMLSpanElement>;
 
 function Text(props: Props) {
     const { className, ...others } = props;
-    return <span {...others} />;
+    return <span className={className} {...others} />;
 }
 
 function Caption(props: Props) {
