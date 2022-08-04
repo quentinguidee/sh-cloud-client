@@ -115,7 +115,7 @@ function OAuthConfigStep(props: StepProps) {
             <Layout stretch vertical gap={20} className={styles.fields}>
                 <InputSelect label="Provider" onChange={onPresetChange}>
                     {presetOptions}
-                    <InputSelectItem value="other">Other...</InputSelectItem>
+                    {/*<InputSelectItem value="other">Other...</InputSelectItem>*/}
                 </InputSelect>
                 {isPresetOther && (
                     <Fragment>
