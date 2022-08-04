@@ -24,6 +24,7 @@ function Input(props: Props, ref: Ref<HTMLInputElement>) {
                 className={classNames({
                     [styles.input]: true,
                     [styles.inputSmall]: small,
+                    [styles.inputDisabled]: props.disabled,
                     [className]: true,
                 })}
                 {...others}
