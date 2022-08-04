@@ -118,7 +118,7 @@ function Login() {
         <div className={styles.content}>
             <Layout vertical className={styles.login} gap={24}>
                 {!loading && (
-                    <Box>
+                    <Box type="primary">
                         <Layout vertical gap={24}>
                             <Title>Login</Title>
                             {methods?.map((method) => (
@@ -131,7 +131,7 @@ function Login() {
                         </Layout>
                     </Box>
                 )}
-                {loading && <Box>{loading}</Box>}
+                {loading && <Box type="primary">{loading}</Box>}
                 {error && (
                     <Box type="error">
                         <Layout vertical gap={12}>
