@@ -9,7 +9,7 @@ function pushAppReducer(state, action: PayloadAction<App>) {
 
 function removeAppReducer(state, action: PayloadAction<App>) {
     const { payload: app } = action;
-    state.splice(app, 1);
+    return state.filter((_app) => _app.name !== app.name);
 }
 
 const appsSlice = createSlice({
