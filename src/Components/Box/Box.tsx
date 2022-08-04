@@ -7,10 +7,11 @@ import { MessageType } from "Models/Message";
 type Props = React.PropsWithChildren<{
     type?: MessageType | "primary";
     className?: string;
+    largeRadius?: boolean;
 }>;
 
 function Box(props: Props) {
-    const { children, className, type } = props;
+    const { children, className, largeRadius, type } = props;
     return (
         <div
             className={classNames({
@@ -19,6 +20,7 @@ function Box(props: Props) {
                 [styles.boxWarning]: type === "warning",
                 [styles.boxError]: type === "error",
                 [styles.boxPrimary]: type === "primary",
+                [styles.boxLargeRadius]: largeRadius,
                 [className]: true,
             })}
         >
