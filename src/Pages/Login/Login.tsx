@@ -133,7 +133,7 @@ function Login() {
                 )}
                 {loading && <Box type="primary">{loading}</Box>}
                 {error && (
-                    <Box type="error">
+                    <Box type="error" largeRadius>
                         <Layout vertical gap={12}>
                             <Subtitle>Error</Subtitle>
                             {error}
