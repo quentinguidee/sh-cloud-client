@@ -45,7 +45,6 @@ function ServerConfig() {
     };
 
     useEffect(() => load(), [step]);
-    if (loading) return <Text>Loading...</Text>;
 
     let content;
     switch (step) {
@@ -61,7 +60,7 @@ function ServerConfig() {
         <Layout horizontal className={styles.content}>
             <Box type="primary">
                 <Layout vertical stretch gap={32}>
-                    {content}
+                    {loading ? <Text>Loading...</Text> : content}
                 </Layout>
             </Box>
         </Layout>
