@@ -1,5 +1,6 @@
 @use "Assets/colors.sass"
 @use "Assets/dimensions.sass"
+@use "Assets/shadows.sass"
 
 .box
     padding: 22px 22px
@@ -21,6 +22,7 @@
     &Primary
         background-color: colors.$background-primary
         color: colors.$text-primary
+        @include shadows.default-shadow
 
     &LargeRadius
         border-radius: dimensions.$border-radius-large
