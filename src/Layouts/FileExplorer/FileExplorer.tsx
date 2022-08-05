@@ -63,8 +63,9 @@ function FileExplorer(props: Props) {
         setRenamingNode(node);
     };
 
-    const renameNodeCallback = (node: Node) => {
+    const renameNodeCallback = (node?: Node) => {
         setRenamingNode(undefined);
+        if (!node) return;
         axios({
             method: "PATCH",
             url: route(`/storage/nodes`),
@@ -146,7 +147,7 @@ function FileExplorer(props: Props) {
                 onShowInfo={() => setInfoNode(node)}
                 onDownload={() => downloadNode(node)}
                 onRename={() => renameNode(node)}
-                onValidation={(newNode) => renameNodeCallback(newNode)}
+                onValidation={(newNode?: Node) => renameNodeCallback(newNode)}
                 onDelete={() => onDelete(node)}
             />
         ));
