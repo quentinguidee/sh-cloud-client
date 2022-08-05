@@ -28,6 +28,7 @@ function NodePreview(props: Props) {
         useState<number>(undefined);
 
     const downloadNode = (node: Node) => {
+        if (node.type === "directory") return;
         setLoadingPercentage(0);
         axios({
             method: "GET",
