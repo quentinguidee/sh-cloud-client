@@ -3,12 +3,15 @@ import axios from "axios";
 import { api, route } from "Backend/api";
 import Layout from "Components/Layout/Layout";
 import styles from "Pages/ServerConfig/ServerConfig.module.sass";
-import Input from "Components/Input/Input";
+import {
+    InputField,
+    InputSelect,
+    InputSelectItem,
+} from "Components/Input/Input";
 import Button from "Components/Button/Button";
 import { Text } from "Components/Text/Text";
 import Symbol from "Components/Symbol/Symbol";
 import { StepProps } from "Pages/ServerConfig/ServerConfig";
-import InputSelect, { InputSelectItem } from "Components/Input/InputSelect";
 import Box from "Components/Box/Box";
 import { Title } from "Components/Title/Title";
 
@@ -92,7 +95,7 @@ function DatabaseConfigStep(props: StepProps) {
                 </InputSelect>
                 {dbms === "postgresql" && (
                     <Fragment>
-                        <Input
+                        <InputField
                             label="URL"
                             name="url"
                             placeholder="localhost"
@@ -100,7 +103,7 @@ function DatabaseConfigStep(props: StepProps) {
                             value={host}
                             onChange={onHostChange}
                         />
-                        <Input
+                        <InputField
                             label="Name"
                             name="name"
                             placeholder="cloudsh"
@@ -108,7 +111,7 @@ function DatabaseConfigStep(props: StepProps) {
                             value={name}
                             onChange={onNameChange}
                         />
-                        <Input
+                        <InputField
                             label="Username"
                             name="username"
                             placeholder="jean.dupont"
@@ -116,7 +119,7 @@ function DatabaseConfigStep(props: StepProps) {
                             value={user}
                             onChange={onUserChange}
                         />
-                        <Input
+                        <InputField
                             label="Password"
                             name="password"
                             placeholder="***"

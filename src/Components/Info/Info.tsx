@@ -8,7 +8,7 @@ type Props = React.PropsWithChildren<{
 
 function Info(props: Props) {
     const { title, children } = props;
-    if (children === undefined) return;
+    if (children === undefined || children === "") return;
 
     return (
         <Layout vertical gap={6}>

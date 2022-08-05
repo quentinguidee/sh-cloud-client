@@ -63,15 +63,12 @@ function FileExplorer(props: Props) {
         setRenamingNode(node);
     };
 
-    const renameNodeCallback = (node: Node, newNode: Node) => {
+    const renameNodeCallback = (node: Node) => {
         setRenamingNode(undefined);
         axios({
             method: "PATCH",
             url: route(`/storage/nodes`),
-            params: {
-                node_uuid: node.uuid,
-                new_name: newNode.name,
-            },
+            params: { ...node },
             headers: {
                 Authorization: token,
             },
@@ -130,6 +127,11 @@ function FileExplorer(props: Props) {
         props.onDrop(e);
     };
 
+    const onInfoClose = () => {
+        if (props.onReload) props.onReload();
+        setInfoNode(undefined);
+    };
+
     let items;
     if (nodes?.length === 0) {
         items = <Text>{ifEmptyMessage}</Text>;
@@ -144,7 +146,7 @@ function FileExplorer(props: Props) {
                 onShowInfo={() => setInfoNode(node)}
                 onDownload={() => downloadNode(node)}
                 onRename={() => renameNode(node)}
-                onValidation={(newNode) => renameNodeCallback(node, newNode)}
+                onValidation={(newNode) => renameNodeCallback(newNode)}
                 onDelete={() => onDelete(node)}
             />
         ));
@@ -163,7 +165,7 @@ function FileExplorer(props: Props) {
             >
                 {items}
             </List>
-            <NodeInfo node={infoNode} onClose={() => setInfoNode(undefined)} />
+            <NodeInfo node={infoNode} onClose={onInfoClose} />
             <NodePreviewPopover
                 node={previewNode}
                 onClose={() => setPreviewNode(undefined)}

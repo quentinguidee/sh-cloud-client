@@ -1,9 +1,10 @@
 export type Node = {
     uuid?: string;
     name: string;
-    size?: number;
     type: string;
     mime?: string;
+    size?: number;
+    description?: string;
     bucket_uuid?: string;
     created_at?: string;
     updated_at?: string;

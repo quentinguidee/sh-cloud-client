@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import Layout from "Components/Layout/Layout";
 import { Subtitle } from "Components/Title/Title";
 
@@ -7,12 +7,19 @@ import { Node } from "Models/Node";
 import NodeSymbol from "Components/NodeSymbol/NodeSymbol";
 import Spacer from "Components/Spacer/Spacer";
 import Close from "Components/Close/Close";
-import { Caption } from "Components/Text/Text";
+import { Caption, Text } from "Components/Text/Text";
 import prettyBytes from "pretty-bytes";
 import classNames from "classnames";
 import Overlay from "Components/Overlay/Overlay";
 import NodePreview from "Components/NodePreview/NodePreview";
 import Info from "Components/Info/Info";
+import { InputArea } from "Components/Input/Input";
+import Separator from "Components/Separator/Separator";
+import Button from "Components/Button/Button";
+import Symbol from "Components/Symbol/Symbol";
+import axios from "axios";
+import { api, route } from "Backend/api";
+import { useToken } from "Store/Hooks/useToken";
 
 type Props = {
     node?: Node;
@@ -20,11 +27,42 @@ type Props = {
 };
 
 function NodeInfo(props: Props) {
-    const { node, onClose } = props;
+    const token = useToken();
+
+    let fields = [];
+
+    const [node, setNode] = useState<Node>(props.node);
+    const [editing, setEditing] = useState<boolean>(false);
+    const [saving, setSaving] = useState<boolean>(false);
 
     const size = node?.size ? prettyBytes(node?.size) : undefined;
 
-    let fields = [];
+    useEffect(() => setNode(props.node), [props.node]);
+
+    const save = () => {
+        setSaving(true);
+        axios({
+            method: "PATCH",
+            url: route("/storage/nodes"),
+            params: { ...node },
+            headers: {
+                Authorization: token,
+            },
+        })
+            .catch(api.error)
+            .finally(() => {
+                setEditing(false);
+                setSaving(false);
+            });
+    };
+
+    const onDescriptionChange = (e) =>
+        setNode({ ...node, description: e.target.value });
+
+    const onClose = () => {
+        if (props.onClose) props.onClose();
+        setEditing(false);
+    };
 
     if (node?.created_at) {
         fields.push(
@@ -69,6 +107,38 @@ function NodeInfo(props: Props) {
                     <Close onClick={onClose} />
                 </Layout>
                 <Layout vertical gap={16} className={styles.content}>
+                    {editing ? (
+                        <Fragment>
+                            <InputArea
+                                fixedWidth
+                                disabled={saving}
+                                value={node?.description}
+                                name="Description"
+                                label="Description"
+                                onChange={onDescriptionChange}
+                            />
+                            <Layout horizontal center bottom gap={16}>
+                                {saving && <Text>Saving...</Text>}
+                                <Button onClick={save}>
+                                    <Text>Save</Text>
+                                    <Symbol symbol="save" />
+                                </Button>
+                            </Layout>
+                        </Fragment>
+                    ) : (
+                        <Fragment>
+                            <Info title="Description">
+                                {node?.description || "-"}
+                            </Info>
+                            <Layout horizontal center bottom gap={16}>
+                                <Button onClick={() => setEditing(true)}>
+                                    <Text>Edit</Text>
+                                    <Symbol symbol="edit" />
+                                </Button>
+                            </Layout>
+                        </Fragment>
+                    )}
+                    <Separator />
                     {fields}
                 </Layout>
             </Layout>

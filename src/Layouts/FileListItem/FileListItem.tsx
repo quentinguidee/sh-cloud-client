@@ -7,7 +7,7 @@ import React, { CSSProperties, useEffect, useRef, useState } from "react";
 import styles from "./FileListItem.module.sass";
 import Popover from "Components/Popover/Popover";
 import PopoverItemWithSymbol from "Components/PopoverItemWithSymbol/PopoverItemWithSymbol";
-import Input from "Components/Input/Input";
+import { InputField } from "Components/Input/Input";
 import Spacer from "Components/Spacer/Spacer";
 import Button from "Components/Button/Button";
 import PopoverSeparator from "Components/PopoverSeparator/PopoverSeparator";
@@ -146,6 +146,7 @@ function FileListItem(props: Props) {
     const submit = () => {
         if (onValidation) {
             onValidation({
+                ...node,
                 name: inputValue,
                 type: node.type,
                 mime: node.mime,
@@ -196,8 +197,9 @@ function FileListItem(props: Props) {
         content = (
             <React.Fragment>
                 <Spacer width={6} />
-                <Input
+                <InputField
                     ref={input}
+                    name="name"
                     placeholder="Name"
                     value={inputValue}
                     onChange={onInputValueChange}

@@ -3,13 +3,16 @@ import axios from "axios";
 import { api, route } from "Backend/api";
 import Layout from "Components/Layout/Layout";
 import styles from "Pages/ServerConfig/ServerConfig.module.sass";
-import Input from "Components/Input/Input";
+import {
+    InputSelect,
+    InputField,
+    InputSelectItem,
+} from "Components/Input/Input";
 import Button from "Components/Button/Button";
 import { Text } from "Components/Text/Text";
 import Symbol from "Components/Symbol/Symbol";
 import { StepProps } from "Pages/ServerConfig/ServerConfig";
 import { Title } from "Components/Title/Title";
-import InputSelect, { InputSelectItem } from "Components/Input/InputSelect";
 
 type Preset = {
     name: string;
@@ -113,13 +116,17 @@ function OAuthConfigStep(props: StepProps) {
         <Fragment>
             <Title>Authentication setup</Title>
             <Layout stretch vertical gap={20} className={styles.fields}>
-                <InputSelect label="Provider" onChange={onPresetChange}>
+                <InputSelect
+                    label="Provider"
+                    name="preset"
+                    onChange={onPresetChange}
+                >
                     {presetOptions}
                     {/*<InputSelectItem value="other">Other...</InputSelectItem>*/}
                 </InputSelect>
                 {isPresetOther && (
                     <Fragment>
-                        <Input
+                        <InputField
                             label="Provider name"
                             name="name"
                             placeholder="GitHub"
@@ -127,7 +134,7 @@ function OAuthConfigStep(props: StepProps) {
                             value={name}
                             onChange={onNameChange}
                         />
-                        <Input
+                        <InputField
                             label="Color"
                             name="color"
                             type="color"
@@ -138,14 +145,14 @@ function OAuthConfigStep(props: StepProps) {
                 )}
                 {!isPresetUndef && (
                     <Fragment>
-                        <Input
+                        <InputField
                             label="Client ID"
                             name="client_id"
                             type="text"
                             value={clientID}
                             onChange={onClientIDChange}
                         />
-                        <Input
+                        <InputField
                             label="Client Secret"
                             name="client_secret"
                             placeholder="***"
@@ -157,7 +164,7 @@ function OAuthConfigStep(props: StepProps) {
                 )}
                 {isPresetOther && (
                     <Fragment>
-                        <Input
+                        <InputField
                             label="Authorize URL"
                             name="authorize_url"
                             placeholder="https://..."
@@ -165,7 +172,7 @@ function OAuthConfigStep(props: StepProps) {
                             value={authorizeURL}
                             onChange={onAuthorizeURLChange}
                         />
-                        <Input
+                        <InputField
                             label="Access Token URL"
                             name="access_token_url"
                             placeholder="https://..."
@@ -176,7 +183,7 @@ function OAuthConfigStep(props: StepProps) {
                     </Fragment>
                 )}
                 {!isPresetUndef && (
-                    <Input
+                    <InputField
                         label="Redirect URL"
                         name="redirect_url"
                         placeholder="https://..."

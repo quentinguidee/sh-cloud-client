@@ -6,7 +6,7 @@ import Layout from "Components/Layout/Layout";
 import ProfilePicture from "Components/ProfilePicture/ProfilePicture";
 import { useUser } from "Store/Hooks/useUser";
 import AccountRole from "Components/AccountRole/AccountRole";
-import Input from "Components/Input/Input";
+import { InputField } from "Components/Input/Input";
 import Button from "Components/Button/Button";
 import Symbol from "Components/Symbol/Symbol";
 import axios from "axios";
@@ -60,16 +60,18 @@ function SettingsProfile() {
                         <AccountRole role={user.role} />
                     </Layout>
                 </Layout>
-                <Input
+                <InputField
                     label="Name"
+                    name="name"
                     value={name}
                     placeholder="Jean Dupont"
                     onChange={onNameChange}
                     disabled={updating}
                     className={styles.input}
                 />
-                <Input
+                <InputField
                     label="Email"
+                    name="email"
                     value={email}
                     placeholder="jean.dupont@example.com"
                     onChange={onEmailChange}
