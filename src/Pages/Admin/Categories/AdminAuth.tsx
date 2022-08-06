@@ -35,7 +35,7 @@ function AdminAuth() {
             <Spacer height={20} />
             <List>
                 {methods?.map((method) => (
-                    <AuthMethodItem method={method} />
+                    <AuthMethodItem key={method.name} method={method} />
                 ))}
             </List>
         </React.Fragment>
