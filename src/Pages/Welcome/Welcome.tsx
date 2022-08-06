@@ -25,7 +25,7 @@ function Section(props: Props) {
             <Subtitle>{title}</Subtitle>
             <Layout horizontal gap={16}>
                 {apps?.filter(condition).map((app) => (
-                    <WelcomeCard app={app} />
+                    <WelcomeCard key={app.id} app={app} />
                 ))}
             </Layout>
         </Layout>
