@@ -42,7 +42,7 @@ function AdminDatabase() {
         for (const key in database) {
             const value = database[key];
             component.push(
-                <InlineInfo title={key}>
+                <InlineInfo key={key} title={key}>
                     <Code>{value}</Code>
                 </InlineInfo>,
             );
