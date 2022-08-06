@@ -40,7 +40,7 @@ function Welcome() {
             <TitleBar title="Your cloud." />
             <Layout vertical left gap={24}>
                 <Layout horizontal center gap={12}>
-                    <ProfilePicture src={user?.profile_picture} />
+                    <ProfilePicture src={user?.profilePicture} />
                     <Text>Welcome back {user?.name}</Text>
                 </Layout>
                 <Section

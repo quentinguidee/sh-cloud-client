@@ -35,7 +35,7 @@ function ServerConfig() {
             url: route(`/config/${step}`),
         })
             .then((res) => {
-                if (res.data.already_done) {
+                if (res.data.alreadyDone) {
                     next();
                 } else {
                     setLoading(false);

@@ -64,18 +64,18 @@ function NodeInfo(props: Props) {
         setEditing(false);
     };
 
-    if (node?.created_at) {
+    if (node?.createdAt) {
         fields.push(
             <Info title="Created at">
-                {new Date(node?.created_at).toLocaleString()}
+                {new Date(node?.createdAt).toLocaleString()}
             </Info>,
         );
     }
 
-    if (node?.updated_at) {
+    if (node?.updatedAt) {
         fields.push(
             <Info title="Last update">
-                {new Date(node?.updated_at).toLocaleString()}
+                {new Date(node?.updatedAt).toLocaleString()}
             </Info>,
         );
     }

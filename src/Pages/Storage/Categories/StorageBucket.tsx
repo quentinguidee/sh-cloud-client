@@ -45,7 +45,7 @@ function StorageBucket(props: Props) {
     }, [plainFiles]);
 
     useEffect(() => {
-        navigate(bucket.root_node?.uuid);
+        navigate(bucket.rootNode?.uuid);
     }, [props.bucket]);
 
     useEffect(() => {

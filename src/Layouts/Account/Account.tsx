@@ -28,7 +28,7 @@ function Account(props: Props) {
     return (
         <div className={styles.account}>
             <ProfilePicture
-                src={user?.profile_picture}
+                src={user?.profilePicture}
                 onClick={togglePopover}
                 className={styles.picture}
             />

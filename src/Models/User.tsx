@@ -3,9 +3,9 @@ type User = {
     username: string;
     name?: string;
     email?: string;
-    profile_picture?: string;
+    profilePicture?: string;
     role?: string;
-    created_at?: string;
+    createdAt?: string;
 };
 
 export default User;

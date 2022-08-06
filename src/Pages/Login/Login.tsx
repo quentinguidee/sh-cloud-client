@@ -21,11 +21,11 @@ type LoginButtonProps = {
 
 function LoginButton(props: LoginButtonProps) {
     const { method, onClick } = props;
-    const { display_name, color: backgroundColor } = method;
+    const { displayName, color: backgroundColor } = method;
 
     return (
         <Button big onClick={onClick} style={{ backgroundColor }}>
-            {display_name}
+            {displayName}
             <Symbol symbol="login" />
         </Button>
     );

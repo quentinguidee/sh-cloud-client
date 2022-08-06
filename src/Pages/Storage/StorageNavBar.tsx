@@ -21,7 +21,7 @@ function StorageSize(props: Props) {
     useEffect(() => {
         if (props.bucket) {
             setBucketSize(props.bucket.size);
-            setBucketLimit(props.bucket.max_size);
+            setBucketLimit(props.bucket.maxSize);
         }
     }, [props.bucket]);
 
@@ -50,7 +50,7 @@ function StorageNavBar(props: Props) {
         <NavBar title="Storage">
             <Layout vertical stretch gap={4}>
                 <NavBarItem
-                    to={`/storage/bucket/${props.bucket.root_node.uuid}`}
+                    to={`/storage/bucket/${props.bucket.rootNode.uuid}`}
                     icon="storage"
                 >
                     My storage

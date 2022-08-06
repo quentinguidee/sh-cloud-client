@@ -6,7 +6,7 @@ export type Bucket = {
     name: string;
     type: string;
     size: number;
-    root_node: Node;
-    max_size?: number;
+    rootNode: Node;
+    maxSize?: number;
     users?: User[];
 };

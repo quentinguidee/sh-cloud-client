@@ -5,9 +5,9 @@ export type Node = {
     mime?: string;
     size?: number;
     description?: string;
-    bucket_uuid?: string;
-    created_at?: string;
-    updated_at?: string;
+    bucketUUID?: string;
+    createdAt?: string;
+    updatedAt?: string;
 };
 
 export type NodeUpload = Node & {

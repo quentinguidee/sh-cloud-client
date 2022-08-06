@@ -14,22 +14,22 @@ function AuthMethodItem(props: Props) {
     const { method } = props;
     return (
         <Layout vertical top left gap={8} className={styles.item}>
-            <Text>{method.display_name}</Text>
+            <Text>{method.displayName}</Text>
             <Spacer />
             <Caption>
-                Client ID: <Code>{method.client_id}</Code>
+                Client ID: <Code>{method.clientID}</Code>
             </Caption>
             <Caption>
-                Client Secret: <Code>{method.client_secret}</Code>
+                Client Secret: <Code>{method.clientSecret}</Code>
             </Caption>
             <Caption>
-                Authorize URL: <Code>{method.authorize_url}</Code>
+                Authorize URL: <Code>{method.authorizeURL}</Code>
             </Caption>
             <Caption>
-                Access Token URL: <Code>{method.access_token_url}</Code>
+                Access Token URL: <Code>{method.accessTokenURL}</Code>
             </Caption>
             <Caption>
-                Redirect URL: <Code>{method.redirect_url}</Code>
+                Redirect URL: <Code>{method.redirectURL}</Code>
             </Caption>
         </Layout>
     );

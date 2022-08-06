@@ -33,7 +33,7 @@ function SettingsProfile() {
             params: {
                 name,
                 email,
-                profile_picture: user.profile_picture,
+                profile_picture: user.profilePicture,
             },
             headers: {
                 Authorization: token,
@@ -54,7 +54,7 @@ function SettingsProfile() {
             <TitleBar title="My profile" />
             <Layout vertical left gap={24}>
                 <Layout horizontal center gap={12}>
-                    <ProfilePicture size={40} src={user.profile_picture} />
+                    <ProfilePicture size={40} src={user.profilePicture} />
                     <Layout vertical left gap={8}>
                         <Text>{user.username}</Text>
                         <AccountRole role={user.role} />
