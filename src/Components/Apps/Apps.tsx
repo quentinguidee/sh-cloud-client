@@ -67,11 +67,11 @@ function Apps() {
         ?.filter(
             (app) => app.position === undefined || app.position === "normal",
         )
-        .map((app) => <App app={app} />);
+        .map((app) => <App key={app.id} app={app} />);
 
     const bottomApps = apps
         ?.filter((app) => app.position === "settings")
-        .map((app) => <App app={app} />);
+        .map((app) => <App key={app.id} app={app} />);
 
     return (
         <Layout vertical center gap={3} className={styles.apps}>
