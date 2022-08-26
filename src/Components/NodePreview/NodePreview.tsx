@@ -102,8 +102,14 @@ function NodePreview(props: Props) {
         };
 
         data.text().then((text) => {
+            const maxContentSize = 10000;
             if (text === "") return null;
-
+            if (text.length > maxContentSize) {
+                text = text.slice(0, maxContentSize);
+                // TODO: Show this warning in the UI.
+                text +=
+                    "\n\nNOTE: The end of this file cannot be rendered in preview mode.";
+            }
             setContent(
                 <CodeBlock
                     language={languages[node?.type] || node?.type}
