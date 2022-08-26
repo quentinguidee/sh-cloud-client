@@ -83,6 +83,16 @@ function NodePreview(props: Props) {
             return;
         }
 
+        if (node?.mime?.includes("application/pdf")) {
+            setContent(
+                <object
+                    data={contentProps.src}
+                    className={classNames(contentProps.className, styles.pdf)}
+                />,
+            );
+            return;
+        }
+
         // Only for languages where the Syntax-Highlighter name is different
         // from the cloud.sh filetype.
         //
